@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Stoper</title>
+	<script type="text/javascript">
+		var timer_ban;
+		var start_ban;
+		var poczatek_ban = 0;
+		var stop_ban;
+		var koniec_ban;
+		var roznica_ban;
+
+		function bandrowski_start() {
+			start_ban = new Date();
+			poczatek_ban = start_ban.getTime();
+			timer_ban = setInterval(function() { 
+				document.getElementById("aktualny_czas").innerHTML = new Date().toLocaleTimeString();
+			}, 1000);
+		}
+
+		function bandrowski_stop() {
+			stop_ban = new Date();
+			koniec_ban = stop_ban.getTime();
+			roznica_ban = koniec_ban - poczatek_ban;
+			clearInterval(timer_ban);
+			document.getElementById("pokaz1").innerHTML = roznica_ban/1000 + " s";
+		}
+	</script>
+</head>
+<body>
+	<h1>Stoper</h1>
+	<p>Aktualny czas: <span id="aktualny_czas"></span></p>
+	<form>
+		<input type="button" name="Button1" value="START stoper" onclick="bandrowski_start()">
+		<input type="button" name="Button2" value="STOP stoper" onclick="bandrowski_stop()">
+	</form>
+	<table border="1">
+		<tr>
+			<td>Czas trwania:</td>
+			<td id="pokaz1"></td>
+		</tr>
+	</table>
+</body>
+</html>
+
+</html>
